@@ -1,0 +1,15 @@
+.contact-icon {
+  width: 40px;
+  border-radius: 20px;
+}
+.contact-item {
+  border-bottom: 1px solid #aaa;
+  padding: 1em 0.5em;
+  cursor: pointer;
+  &.contact-selected {
+    background-color: #41addd;
+  }
+}
+.full-name {
+  font-weight: 600;
+}

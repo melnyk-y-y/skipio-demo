@@ -1,60 +1,60 @@
-/*
- * HomePage
- *
- * This is the first thing users see of our App, at the '/' route
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import ReposList from 'components/ReposList';
+import { Grid, Row, Col } from 'react-bootstrap';
 import './style.scss';
 
-export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   /**
    * when initial state username is not null, submit the form to load repos
    */
-  componentDidMount() {
-    if (this.props.username && this.props.username.trim().length > 0) {
-      this.props.onSubmitForm();
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      accessToken: ''
+    };
+    this.onTokenSubmit = this.onTokenSubmit.bind(this);
+    this.onTokenChange = this.onTokenChange.bind(this);
+  }
+
+  onTokenSubmit(event) {
+    window.localStorage.accessToken = this.state.accessToken;
+    event.preventDefault();
+    this.props.history.push('/message_center');
+  }
+
+  onTokenChange(event) {
+    this.setState({ accessToken: event.target.value });
   }
 
   render() {
-    const { loading, error, repos } = this.props;
-    const reposListProps = {
-      loading,
-      error,
-      repos,
-    };
-
     return (
       <article>
         <Helmet>
           <title>Home Page</title>
-          <meta name="description" content="A React.js Boilerplate application homepage" />
+          <meta name="description" content="Skipio Demo application homepage" />
         </Helmet>
         <div className="home-page">
-          <section className="centered">
-            <h2>Start your next react project in seconds</h2>
-            <p>A minimal <i>React-Redux</i> boilerplate with all the best practices</p>
-          </section>
-          <section>
-            <h2>Try me!</h2>
-            <form onSubmit={this.props.onSubmitForm}>
-              <label htmlFor="username">
-              Show Github repositories by
-                <span className="at-prefix">@</span>
-                <input
-                  id="username"
-                  type="text"
-                  placeholder="flexdinesh"
-                  value={this.props.username}
-                  onChange={this.props.onChangeUsername}
-                />
-              </label>
-            </form>
-            <ReposList {...reposListProps} />
+          <section className="login-form-container">
+            <h2>Please enter access token to enter the website</h2>
+            <Grid>
+              <form onSubmit={this.onTokenSubmit}>
+                <Row className="show-grid">
+                  <Col xs={12} md={8} lg={9}>
+                    <input
+                      id="accessToken"
+                      type="text"
+                      placeholder="enter token"
+                      value={this.state.accessToken}
+                      onChange={this.onTokenChange}
+                    />
+                  </Col>
+                  <Col xs={12} md={4} lg={3}>
+                    <button type="submit" className="login-form-submit primary-button">submit</button>
+                  </Col>
+                </Row>
+              </form>
+            </Grid>
           </section>
         </div>
       </article>
@@ -63,16 +63,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
 }
 
 HomePage.propTypes = {
-  loading: PropTypes.bool,
-  error: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.bool,
-  ]),
-  repos: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.bool,
-  ]),
-  onSubmitForm: PropTypes.func,
-  username: PropTypes.string,
-  onChangeUsername: PropTypes.func,
+  history: PropTypes.object
 };
+
+export default HomePage;

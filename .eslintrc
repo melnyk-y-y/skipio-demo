@@ -21,7 +21,9 @@
     },
     "rules": {
       "no-param-reassign": "off",
+      "react/no-array-index-key": "off",
       "function-paren-newline": "off",
+      "class-methods-use-this": "off",
       "arrow-parens": [
         "error",
         "always"

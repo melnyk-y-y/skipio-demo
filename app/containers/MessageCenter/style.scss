@@ -1,0 +1,27 @@
+.message-center-page {
+  margin-top: 40px;
+}
+
+.list-of-contacts-header {
+  background: #ccc;
+  text-align: center;
+  padding: 1em;
+  border-radius: 8px 8px 0 0;
+  border-bottom: 1px solid #aaa;
+  position: relative;
+}
+.list-of-contacts {
+  background: #ddd;
+  height: 600px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.logout-bttn {
+  position: absolute;
+  right: 20px;
+  padding: 0 10px;
+}
+.send-message-panel {
+  background: #fff;
+  height: 600px;
+}

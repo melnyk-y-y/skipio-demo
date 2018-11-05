@@ -1,11 +1,25 @@
+.login-form-container {
+  background: rgba(40, 40, 40, 0.7);
+  border-radius: 5px;
+  margin: 5em;
+}
+
+.login-form-submit {
+  display: inline-block;
+  width: 100%;
+}
+
 .home-page {
-  
+
   h2 {
-    font-size: 1.5em;
+    font-size: 1.2em;
+    color: #eee;
   }
-  
+
   section {
     margin: 3em auto;
+    padding: 3em;
+    text-align: center;
 
     &:first-child {
       margin-top: 0;
@@ -21,7 +35,16 @@
 
     input {
       outline: none;
-      border-bottom: 1px dotted #999;
+      color: #ccc;
+      width: 100%;
+      padding: 0.5em;
+      background: rgba(220, 220, 220, 0.4);
+      text-align: center;
+    }
+    input, button {
+      margin-top: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
     }
   }
 
