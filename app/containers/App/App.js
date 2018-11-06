@@ -11,10 +11,9 @@ import { Helmet } from 'react-helmet';
 import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
-import FeaturePage from 'containers/FeaturePage/Loadable';
+import MessageCenter from 'containers/MessageCenter/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
-import Footer from 'components/Footer';
 import './style.scss';
 
 const App = () => (
@@ -28,10 +27,9 @@ const App = () => (
     <Header />
     <Switch>
       <Route exact path="/" component={HomePage} />
-      <Route path="/features" component={FeaturePage} />
+      <Route path="/message_center" component={MessageCenter} />
       <Route path="" component={NotFoundPage} />
     </Switch>
-    <Footer />
   </div>
 );
 

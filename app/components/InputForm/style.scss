@@ -1,0 +1,17 @@
+.input-form-textarea {
+  width: 100%;
+  background-color: #ede;
+  border-radius: 6px;
+  padding: 1em;
+  resize: none;
+  &:focus {
+    border-radius: 6px;
+    outline: none !important;
+  }
+}
+
+.send-sms-bttn {
+  border-radius: 20px;
+  float: right;
+  outline: none !important;
+}
